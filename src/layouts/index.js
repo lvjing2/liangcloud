@@ -4,125 +4,85 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import presets from "../utils/presets"
+import colors from "../utils/colors"
+
+import SidebarBody from "../components/sidebar-body"
+
 import typography, {rhythm, scale} from "../utils/typography"
 
 import Navigation from "../components/navigation"
 
-import './index.css'
+class DefaultLayout extends React.Component {
+    render() {
+        const isHomepage = this.props.location.pathname == `/`
+        const hasSidebar =
+            this.props.location.pathname.slice(0, 6) == `/docs/` ||
+            this.props.location.pathname.slice(0, 10) == `/packages/` ||
+            this.props.location.pathname.slice(0, 10) == `/tutorial/` ||
+            this.props.location.pathname.slice(0, 9) == `/features`
+        const sidebarStyles = {
+            borderRight: `1px solid ${colors.b[0]}`,
+            backgroundColor: presets.sidebar,
+            boxShadow: `inset 0 4px 5px 0 rgba(116, 76, 158, ${presets.shadowKeyPenumbraOpacity}), inset 0 1px 10px 0 rgba(${presets.shadowColor}, ${presets.shadowAmbientShadowOpacity}), inset 0 2px 4px -1px rgba(${presets.shadowColor}, ${presets.shadowKeyUmbraOpacity})`,
+            width: rhythm(10),
+            display: `none`,
+            position: `fixed`,
+            top: `calc(${presets.headerHeight} - 1px)`,
+            overflowY: `auto`,
+            zIndex: 1,
+            height: `calc(100vh - ${presets.headerHeight} + 1px)`,
+            WebkitOverflowScrolling: `touch`,
+            "::-webkit-scrollbar": {
+                width: `6px`,
+                height: `6px`,
+            },
+            "::-webkit-scrollbar-thumb": {
+                background: presets.lightPurple,
+            },
+            "::-webkit-scrollbar-track": {
+                background: presets.brandLighter,
+            },
+            [presets.Desktop]: {
+                width: rhythm(12),
+                padding: rhythm(1),
+            },
+        }
 
-// const Header = () => (
-//   <div
-//     style={{
-//       background: 'rebeccapurple',
-//       marginBottom: '1.45rem',
-//     }}
-//   >
-//     <div
-//       style={{
-//         margin: '0 auto',
-//         maxWidth: 960,
-//         padding: '1.45rem 1.0875rem',
-//       }}
-//     >
-//       <h1 style={{ margin: 0 }}>
-//         <Link
-//           to="/"
-//           style={{
-//             color: 'white',
-//             textDecoration: 'none',
-//           }}
-//         >
-//           Gatsby
-//         </Link>
-//       </h1>
-//     </div>
-//   </div>
-// );
-
-const ListLink = props =>
-    <li style={{display: 'inline-block', marginRight: '1rem'}}>
-        <Link to={props.to}>{props.children}</Link>
-    </li>;
-
-const Header = styled.header`
-    position: fixed; 
-    background-color: rgba(255,255,255,0.975);
-    border-bottom: 1px solid #f6f2f8;
-    height: 3.5rem;
-    z-index: 1;
-    left: 0;
-    right: 0;
-`;
-
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <Helmet
-        defaultTitle={`GatsbyJS`} titleTemplate={`%s | GatsbyJS`}
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
-    />
-      {/*<Navigation pathname="/" />*/}
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
-        <Header>
-            <Link to="/"
-                css={{
-                    color: `inherit`,
-                    display: `inline-block`,
-                    textDecoration: `none`,
-                    marginRight: rhythm(0.5),
-                }}>
-                <img
-                    src=""
-                    css={{
-                        display: `inline-block`,
-                        height: rhythm(1.2),
-                        width: rhythm(1.2),
-                        margin: 0,
-                        marginRight: rhythm(2 / 4),
-                        verticalAlign: `middler`,
-                    }}
-                    alt=""
+        return (
+            <div>
+                <Helmet defaultTitle={`GatsbyJS`} titleTemplate={`%s | GatsbyJS`}
+                    meta={[
+                        {name: 'description', content: 'Sample'},
+                        {name: 'keywords', content: 'sample, something'},
+                    ]}
                 />
-                <h1
-                 css={{
-                     ...scale(2/5),
-                     display: `inline-block`,
-                     margin: 0,
-                     verticalAlign: `middle`,
-                 }}
-                >Jolly</h1>
-            </Link>
-            <ul
-                css={{
-                    display: `none`,
-                    [presets.Tablet]: {
-                        display: `block`,
-                        margin: 0,
-                        padding: 0,
-                        listStyle: `none`,
-                    },
-                }}>
-                <ListLink to='/'>Home</ListLink>
-                <ListLink to='/about'>About</ListLink>
-                <ListLink to='/contact'>Contact</ListLink>
-            </ul>
-        </Header>
-      {children()}
-    </div>
-  </div>
-)
-
-TemplateWrapper.propTypes = {
-  children: PropTypes.func,
+                <Navigation pathname={this.props.location.pathname}/>
+                <div
+                    className={hasSidebar ? `main-body has-sidebar` : `main-body`}
+                    css={{
+                        paddingTop: 0,
+                        [presets.Tablet]: {
+                            margin: `0 auto`,
+                            paddingTop: isHomepage ? 0 : presets.headerHeight,
+                        },
+                    }}
+                >
+                    <div
+                        css={{
+                            [presets.Tablet]: {
+                                paddingLeft: hasSidebar ? rhythm(10) : 0,
+                            },
+                            [presets.Desktop]: {
+                                paddingLeft: hasSidebar ? rhythm(12) : 0,
+                            },
+                        }}
+                    >
+                        {this.props.children()}
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
 
-export default TemplateWrapper
+module.exports = DefaultLayout

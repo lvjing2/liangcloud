@@ -19,6 +19,6 @@ module.exports = {
                 path: `${__dirname}/post/`,
             },
         },
-        `gatsby-plugin-styled-components`,
+        `gatsby-plugin-glamor`,
     ],
 };
