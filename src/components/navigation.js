@@ -18,7 +18,7 @@ const navItemStyles = {
     textDecoration: `none`,
     textTransform: `uppercase`,
     letterSpacing: `0.03em`,
-    lineHeight: `calc(${presets.headerHeight} - 4px`,
+    lineHeight: `calc(${presets.headerHeight} - 4px)`,
     padding: `4px ${rhythm(0.5)} 0`,
     position: `relative`,
     top: 0,
