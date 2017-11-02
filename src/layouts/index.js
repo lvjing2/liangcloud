@@ -13,7 +13,8 @@ import Navigation from "../components/navigation"
 
 class DefaultLayout extends React.Component {
     render() {
-        const isHomepage = this.props.location.pathname == `/`
+        // const isHomepage = this.props.location.pathname == `/`
+        const isHomepage = false;
         const hasSidebar =
             this.props.location.pathname.slice(0, 6) == `/docs/` ||
             this.props.location.pathname.slice(0, 10) == `/packages/` ||

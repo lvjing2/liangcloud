@@ -20,5 +20,9 @@ module.exports = {
             },
         },
         `gatsby-plugin-glamor`,
+        `gatsby-transformer-remark`,
+        {
+            resolve: `gatsby-plugin-sitemap`,
+        },
     ],
 };

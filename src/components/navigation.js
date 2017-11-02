@@ -42,8 +42,10 @@ const NavItem = ({linkTo, children}) => (
 );
 
 export default ({pathname}) => {
-    const isHomepage = pathname == `/`
-    const isBlog = pathname == `/blog/`
+    // const isHomepage = pathname == `/`
+    // const isBlog = pathname == `/blog/`
+    const isHomepage = false;
+    const isBlog = true;
     let styles = {}
     if (isHomepage) {
         styles.backgroundColor = `rgba(255,255,255,0)`
@@ -102,7 +104,7 @@ export default ({pathname}) => {
                     paddingRight: rhythm(3 / 4),
                     ...gutters,
                     fontFamily: typography.options.headerFontFamily.join(`,`),
-                    display: `fles`,
+                    display: `flex`,
                     alignItems: `center`,
                     width: `100%`,
                     height: `100%`,
