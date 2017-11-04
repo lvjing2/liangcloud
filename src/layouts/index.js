@@ -69,15 +69,36 @@ class DefaultLayout extends React.Component {
                 >
                     <div
                         css={{
-                            [presets.Tablet]: {
-                                paddingLeft: hasSidebar ? rhythm(10) : 0,
-                            },
-                            [presets.Desktop]: {
-                                paddingLeft: hasSidebar ? rhythm(12) : 0,
-                            },
-                        }}
-                    >
-                        {this.props.children()}
+                            display: `flex`,
+                        }}>
+                        <div
+                            css={{
+                                flex: 1,
+                                width: `calc(2/3)%`,
+                            }}
+                        >
+                            <ul>
+                                <li>1.1</li>
+                                <li>1.1</li>
+                                <li>1.1</li>
+                                <li>1.1</li>
+                                <li>1.1</li>
+                            </ul>
+                        </div>
+                        <div
+                            css={{
+                                [presets.Tablet]: {
+                                    paddingLeft: hasSidebar ? rhythm(10) : 0,
+                                },
+                                [presets.Desktop]: {
+                                    paddingLeft: hasSidebar ? rhythm(12) : 0,
+                                },
+                                flex: 0,
+                                width: `calc(1/3)%`,
+                            }}
+                        >
+                            {this.props.children()}
+                        </div>
                     </div>
                 </div>
             </div>
