@@ -1,5 +1,7 @@
 module.exports = {
     siteMetadata: {
+        author: `jolly`,
+        homeCity: `Shanghai`,
         title: `量子云`,
         siteUrl: `http:www.liangcloud.cn`,
         description: `我只是一团量子云而已`,
