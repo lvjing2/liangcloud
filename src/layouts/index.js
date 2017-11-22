@@ -11,10 +11,12 @@ import typography, {rhythm, scale} from "../utils/typography"
 
 import Navigation from "../components/navigation"
 
+
+// refer: https://imququ.com/
 class DefaultLayout extends React.Component {
     render() {
         // const isHomepage = this.props.location.pathname == `/`
-        const isHomepage = false;
+        const isHomepage = true;
         const hasSidebar =
             this.props.location.pathname.slice(0, 6) == `/docs/` ||
             this.props.location.pathname.slice(0, 10) == `/packages/` ||
@@ -56,7 +58,7 @@ class DefaultLayout extends React.Component {
                         {name: 'keywords', content: 'sample, something'},
                     ]}
                 />
-                <Navigation pathname={this.props.location.pathname}/>
+                {/*<Navigation pathname={this.props.location.pathname}/>*/}
                 <div
                     className={hasSidebar ? `main-body has-sidebar` : `main-body`}
                     css={{
@@ -73,8 +75,7 @@ class DefaultLayout extends React.Component {
                         }}>
                         <div
                             css={{
-                                flex: 1,
-                                width: `calc(2/3)%`,
+                                flex: `0 0 250px`,
                             }}
                         >
                             <ul>
@@ -93,8 +94,7 @@ class DefaultLayout extends React.Component {
                                 [presets.Desktop]: {
                                     paddingLeft: hasSidebar ? rhythm(12) : 0,
                                 },
-                                flex: 0,
-                                width: `calc(1/3)%`,
+                                flex: 3,
                             }}
                         >
                             {this.props.children()}
