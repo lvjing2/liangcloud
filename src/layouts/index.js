@@ -11,6 +11,8 @@ import typography, {rhythm, scale} from "../utils/typography"
 
 import Navigation from "../components/navigation"
 
+
+// refer: https://imququ.com/
 class DefaultLayout extends React.Component {
     render() {
         const isHomepage = this.props.location.pathname == `/`
