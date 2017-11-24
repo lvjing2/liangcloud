@@ -3,7 +3,7 @@ path: "/blog"
 date: "2017-11-25T17:12:33.962Z"
 title: "Spring MVC Learning"
 tags: 
-    - "3"
+    - "spring"
 draft: false
 ---
 

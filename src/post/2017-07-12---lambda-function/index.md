@@ -3,7 +3,7 @@ path: "/blog"
 date: "2017-07-12T17:12:33.962Z"
 title: "无服务云计算"
 tags: 
-    - "2"
+    - "lambda"
 draft: false
 ---
 

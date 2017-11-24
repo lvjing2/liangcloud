@@ -88,17 +88,6 @@ class BlogPostRoute extends React.Component {
             marginBottom: 0,
           }}
         >
-          <img
-            src={profilePic}
-            style={{
-              borderRadius: `100%`,
-              float: "left",
-              marginRight: rhythm(1 / 4),
-              marginBottom: 0,
-              width: rhythm(2),
-              height: rhythm(2),
-            }}
-          />
           {/*Here to share my contact of internet*/}
         </p>
       </div>
