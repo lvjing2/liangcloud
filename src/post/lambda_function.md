@@ -7,8 +7,6 @@ tags:
 draft: false
 ---
 
-Oooooh-weeee, my first blog post!
-
 # 无服务云计算
 
 Aws lambda的使用体验

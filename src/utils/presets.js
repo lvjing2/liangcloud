@@ -17,7 +17,7 @@ module.exports = {
     maxWidthWithSidebar: 26,
     lightPurple: `#e0d6eb`,
     veryLightPurple: `#f6f2f8`,
-    sidebar: `#fbfafc`,
+    sidebar: `rgba(0, 123, 139, 0.95)`,
     calm: `rgba(38, 32, 44, .5)`,
     // palette by @SachaG
     // @see https://www.figma.com/file/J6IYJEtdRmwJQOrcZ2DfvxDD/Gatsby
@@ -45,5 +45,5 @@ module.exports = {
         speedFast: `100ms`,
     },
     logoOffset: 1.7,
-    headerHeight: `3.5rem`,
+    headerHeight: `0rem`,
 }
