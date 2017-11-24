@@ -16,12 +16,7 @@ import Navigation from "../components/navigation"
 class DefaultLayout extends React.Component {
     render() {
         const isHomepage = this.props.location.pathname == `/`
-        const hasSidebar =
-            this.props.location.pathname == `/` ||
-            this.props.location.pathname.slice(0, 6) == `/docs/` ||
-            this.props.location.pathname.slice(0, 10) == `/packages/` ||
-            this.props.location.pathname.slice(0, 10) == `/tutorial/` ||
-            this.props.location.pathname.slice(0, 9) == `/features`
+        const hasSidebar = true
         const sidebarStyles = {
             borderRight: `1px solid ${colors.b[0]}`,
             backgroundColor: presets.sidebar,
@@ -34,16 +29,7 @@ class DefaultLayout extends React.Component {
             zIndex: 1,
             height: `calc(100vh - ${presets.headerHeight} + 1px)`,
             WebkitOverflowScrolling: `touch`,
-            "::-webkit-scrollbar": {
-                width: `6px`,
-                height: `6px`,
-            },
-            "::-webkit-scrollbar-thumb": {
-                background: presets.lightPurple,
-            },
-            "::-webkit-scrollbar-track": {
-                background: presets.brandLighter,
-            },
+            color: `#fff`,
             [presets.Desktop]: {
                 width: rhythm(12),
                 padding: rhythm(1),
@@ -95,8 +81,8 @@ class DefaultLayout extends React.Component {
                                             display: `block`,
                                             height: `160px`,
                                             width: `160px`,
-                                        }} href="#"></a>
-                                        <h1><a href="#">Jolly Zhao</a></h1>
+                                        }} href="/"></a>
+                                        <h1><a href="/">Jolly</a></h1>
                                         <p>我是一只小小小小小小菜鸟</p>
                                     </div>
                                 </header>
@@ -115,9 +101,7 @@ class DefaultLayout extends React.Component {
                                 },
                             }}
                         >
-                            <div className={`main-body`}>
                                 {this.props.children()}
-                            </div>
                         </div>
                     </div>
                 </div>
