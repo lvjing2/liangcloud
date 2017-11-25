@@ -23,7 +23,7 @@ const Component = React.createClass({
               letterSpacing: -0.25,
             }}
           >
-            READ THIS NEXT:
+            阅读更多:
           </h6>
           <h3
             style={{

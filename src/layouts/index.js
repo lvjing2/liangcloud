@@ -15,12 +15,11 @@ import Navigation from "../components/navigation"
 // refer: https://imququ.com/
 class DefaultLayout extends React.Component {
     render() {
-        const isHomepage = this.props.location.pathname == `/`
+        const isHomepage = this.props.location.pathname === `/`
         const hasSidebar = true
         const sidebarStyles = {
             borderRight: `1px solid ${colors.b[0]}`,
             backgroundColor: presets.sidebar,
-            boxShadow: `inset 0 4px 5px 0 rgba(116, 76, 158, ${presets.shadowKeyPenumbraOpacity}), inset 0 1px 10px 0 rgba(${presets.shadowColor}, ${presets.shadowAmbientShadowOpacity}), inset 0 2px 4px -1px rgba(${presets.shadowColor}, ${presets.shadowKeyUmbraOpacity})`,
             width: rhythm(10),
             display: `none`,
             position: `fixed`,
@@ -28,7 +27,6 @@ class DefaultLayout extends React.Component {
             overflowY: `auto`,
             zIndex: 1,
             height: `calc(100vh - ${presets.headerHeight} + 1px)`,
-            WebkitOverflowScrolling: `touch`,
             color: `#fff`,
             [presets.Desktop]: {
                 width: rhythm(12),
@@ -38,7 +36,7 @@ class DefaultLayout extends React.Component {
 
         return (
             <div>
-                <Helmet defaultTitle={`GatsbyJS`} titleTemplate={`%s | GatsbyJS`}
+                <Helmet defaultTitle={`RiangCloud`} titleTemplate={`%s | LiangCloud`}
                     meta={[
                         {name: 'description', content: 'Sample'},
                         {name: 'keywords', content: 'sample, something'},
@@ -61,7 +59,12 @@ class DefaultLayout extends React.Component {
                         <div
                             css={{
                                 ...sidebarStyles,
-                                display: `block`,
+                                [presets.Tablet]: {
+                                    display: `block`,
+                                },
+                                [presets.Desktop]: {
+                                    display: `block`,
+                                },
                             }}
                         >
                             <div>
@@ -69,8 +72,10 @@ class DefaultLayout extends React.Component {
                                     borderBottom: `none`,
                                     height: `auto`,
                                     lineHeight: `30px`,
-                                    marginLeft: `50px`,
-                                    padding: `30px 0`,
+                                    paddingTop: `30px`,
+                                    paddingBottom: `30px`,
+                                    paddingLeft: rhythm(2),
+                                    paddingRight: rhythm(2),
                                     width: `100%`,
                                 }}>
                                     <div>
@@ -83,7 +88,7 @@ class DefaultLayout extends React.Component {
                                             width: `160px`,
                                         }} href="/"></a>
                                         <h1><a href="/">Jolly</a></h1>
-                                        <p>我是一只小小小小小小菜鸟</p>
+                                        <p>我是一只小小小小菜鸟</p>
                                     </div>
                                 </header>
                             </div>
@@ -91,13 +96,15 @@ class DefaultLayout extends React.Component {
                         <div
                             css={{
                                 left: 0,
+                                paddingLeft: hasSidebar ? rhythm(1) : 0,
+                                paddingRight: hasSidebar ? rhythm(1) : 0,
                                 [presets.Tablet]: {
                                     paddingLeft: hasSidebar ? rhythm(12) : 0,
                                     paddingRight: hasSidebar ? rhythm(2) : 0,
                                 },
                                 [presets.Desktop]: {
                                     paddingLeft: hasSidebar ? rhythm(14) : 0,
-                                    paddingRight: hasSidebar ? rhythm(2) : 0,
+                                    paddingRight: hasSidebar ? rhythm(4) : 0,
                                 },
                             }}
                         >
