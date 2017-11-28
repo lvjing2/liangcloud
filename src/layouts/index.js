@@ -11,11 +11,12 @@ import typography, {rhythm, scale} from "../utils/typography"
 
 import Navigation from "../components/navigation"
 
-
 // refer: https://imququ.com/
 class DefaultLayout extends React.Component {
     render() {
         const isHomepage = this.props.location.pathname === `/`
+        const analysisPath = this.props.location.pathname+`analysis.js`
+        console.log(analysisPath)
         const hasSidebar = true
         const sidebarStyles = {
             borderRight: `1px solid ${colors.b[0]}`,
@@ -41,6 +42,10 @@ class DefaultLayout extends React.Component {
                         {name: 'description', content: 'Sample'},
                         {name: 'keywords', content: 'sample, something'},
                     ]}
+                    script={[{
+                        src: {analysisPath},
+                        type: `text/javascript`
+                    }]}
                 />
                 {/*<Navigation pathname={this.props.location.pathname}/>*/}
                 <div
