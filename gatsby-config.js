@@ -25,5 +25,11 @@ module.exports = {
         `gatsby-plugin-catch-links`,
         `gatsby-plugin-glamor`,
         `gatsby-plugin-sitemap`,
+        {
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+                trackingId: `UA-774017-3`,
+            },
+        },
     ],
 };

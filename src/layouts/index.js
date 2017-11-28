@@ -36,7 +36,7 @@ class DefaultLayout extends React.Component {
 
         return (
             <div>
-                <Helmet defaultTitle={`RiangCloud`} titleTemplate={`%s | LiangCloud`}
+                <Helmet defaultTitle={`LiangCloud`} titleTemplate={`%s | LiangCloud`}
                     meta={[
                         {name: 'description', content: 'Sample'},
                         {name: 'keywords', content: 'sample, something'},
