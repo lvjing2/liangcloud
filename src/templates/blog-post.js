@@ -3,7 +3,6 @@ import Helmet from "react-helmet"
 import Link from "gatsby-link"
 import typography from "../utils/typography"
 const { rhythm, scale } = typography
-const profilePic = require("../images/kyle-round-small-pantheon.jpg")
 import ReadNext from "../components/ReadNext"
 //import { query } from '../components/ReadNext'
 const query = `
