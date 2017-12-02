@@ -10,6 +10,7 @@ import SidebarBody from "../components/sidebar-body"
 import typography, {rhythm, scale} from "../utils/typography"
 
 import Navigation from "../components/navigation"
+import Comment from "../components/comment"
 
 // refer: https://imququ.com/
 class DefaultLayout extends React.Component {
@@ -112,6 +113,7 @@ class DefaultLayout extends React.Component {
                             }}
                         >
                                 {this.props.children()}
+                            <Comment/>
                         </div>
                     </div>
                 </div>
