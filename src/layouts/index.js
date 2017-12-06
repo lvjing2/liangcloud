@@ -112,8 +112,8 @@ class DefaultLayout extends React.Component {
                                 },
                             }}
                         >
-                                {this.props.children()}
-                            <Comment/>
+                            {this.props.children()}
+                            <Comment loc={this.props.location.pathname.split(`?`)[0].replace(/^\//, '').replace(/\/$/, '')}/>
                         </div>
                     </div>
                 </div>

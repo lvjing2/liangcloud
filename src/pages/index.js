@@ -5,7 +5,6 @@ import g from "glamorous"
 import { rhythm } from "../utils/typography"
 
 export default ({ data }) => {
-    console.log(data)
     return (
         <div>
             {data.allMarkdownRemark.edges.map(({ node }) =>
