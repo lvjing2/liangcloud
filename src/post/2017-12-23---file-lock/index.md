@@ -1,14 +1,13 @@
 ---
 path: "/blog"
-date: "2017-12-23T12:13:33.962Z"
+date: "2017-12-23T12:00:33.962Z"
 title: "高并发文件读写"
 tags: 
     - "cloud"
 draft: false
 ---
 
-
-闲来无事，硬扯了个蛋。
+Just study something to make the boring life a little more interesting。
 
 目前着手的项目，是关于一个用文件做缓存的。具体过程是页面的每个请求都会触发一个线程来读取资源文件，当文件系统里不存在该文件时，则会从数据库中读取并编译出资源对象，然后序列化并保存到文件中。这样下次访问该页面时直接从文件系统中读取即可，这样达到了加速页面访问的效果。
 
