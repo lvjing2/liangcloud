@@ -35,6 +35,8 @@ draft: false
 - 每个bucket最多只能有100个lambda function.
 - 每个账号能注册的bucket数量也有限制.
 - 一个role触发的同时计算的结点数最多只有3000个.
+- 一个账户只有75G的lambda function code storage
+- 一个lambda function解压后的size不能大于150M
 - ...
     
     
@@ -43,4 +45,11 @@ draft: false
 - 但是当进行create，copy操作时，是read-after-write consistency,也就是说在这两种操作下，立马获取该文件，是可以得到最新的数据的。
 - 要获取某一文件夹下文件的数量时，amazon并没有提供这样的借口，必须由开发者把所有的文件list一遍，然后统计数量。这当文件数量非常大的时候，这样的操作就会非常的耗时。。如果amazon本身提供这样的接口，其实这样在服务器内部list并计数一下就可以得到数值并返回了，就不需要用户远程地list所有的文件出来了，这样可以减少很多网络消耗和等待时间。。
   
+  
+####lambda function的结点复用问题
+- Context复用时classpath不干净，易残留上次的信息，需要清理然后在进行spring context的refresh
+- 使用自定义的classloader性能将大幅下降，推荐使用反射调用原生classloade的addUrl方法可大幅提高性能。这个问题的原因还未进一步深入研究。
+- 资源需要删除，否则资源将堆积起来，导致超出一个结点/tmp文件夹512M的大小限制
+- 日志log在复用的节点里无法正确写入日志文件，主要需要做日志文件内容的清除，注意不能删除日志文件，否则log stream将被中断，后序的日志都无法写入。
+- spring context 如果在复用的节点上重新new，那么会产生两份内存占用，容易发生oom
    
